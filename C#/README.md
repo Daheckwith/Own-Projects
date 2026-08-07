@@ -1,5 +1,5 @@
-# Repository Structure
-The general structure of the repository is as follows:
+# Project Structure
+The general structure of the project is as follows:
 
 ```md
 C#/
@@ -40,6 +40,12 @@ The **main program**/**entry point** in a project folder is marked with **X**.
 | `RequestManager.cs` | Builds and resolves the full Business Central API URI step by step: prompts for environment name, lets the user pick a company, select an API route (manual, standard v2.0, or from a live list), and select an endpoint. Exposes `EstablishConnection()` to run this setup and `GetValues(query?)` to fetch records. |
 | `JSONParser.cs` | Static helper for parsing API responses. `ParseJsonContent()` deserializes a JSON string to a `JsonObject`; `GetValueJsonArray()` extracts the `value` array from an OData envelope; `PrintJsonArrayContent()` dumps each element to the console. |
 | **`Program.cs`** | Main Program/Entry point. Bootstraps `OAuthPrimer` → `Authenticator` → `HttpReq` → `RequestManager` in sequence, then either runs a preconfigured demo request (top 10 items ordered by unit price) or lets the user interactively select an endpoint and query.|
+
+### Prerequisites
+- [API Filtering Guidelines](https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md#97-filtering)  
+- [BC - Tips for working with APIs](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/devenv-connect-apps-tips)
+- [BC - Using filter expressions in OData URIs](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/webservices/use-filter-expressions-in-odata-uris)
+- [BC -Entering criteria in filters](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/devenv-entering-criteria-in-filters)
 
 # Getting Started
 ## API_Management
