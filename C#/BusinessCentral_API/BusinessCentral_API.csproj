@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>BusinessCentral_API</RootNamespace>
-    <UserSecretsId>85dbeb58-b712-4ec7-b7d3-d2ee1d53ca02</UserSecretsId>
+    <!-- <UserSecretsId>UserGUID</UserSecretsId> -->
   </PropertyGroup>
 
   <ItemGroup>

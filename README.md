@@ -27,8 +27,8 @@ A set of reusable classes for authenticating against and communicating with REST
 ### BusinessCentral_API
 A console application for querying the Business Central REST API. Guides the user through OAuth setup, environment and company selection, and endpoint discovery, then fetches and displays records using OData queries.
 
-### Next Project - Database querying using LINQ
-Still in the planning phase, this project will focus on querying databases using LINQ in C#. It will include examples of various LINQ queries, filtering, sorting, and joining data from different sources.
+### Next Project - Database querying using EF CORE
+This project will focus on querying relational databases using EF Core in C#. It will include examples of LINQ queries, filtering, sorting, projections, and joining related data across multiple tables. The project will demonstrate both method syntax and query syntax while showcasing best practices for data access in modern .NET applications.
 
 <!-- ## Usage
 
