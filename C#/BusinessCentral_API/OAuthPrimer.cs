@@ -1,6 +1,8 @@
 namespace BusinessCentral_API;
 
 using Microsoft.Extensions.Configuration;
+using System;
+using Utilities;
 
 internal class OAuthPrimer : SecretsPrimer
 {

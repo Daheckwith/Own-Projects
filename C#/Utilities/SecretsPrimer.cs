@@ -1,5 +1,6 @@
-namespace BusinessCentral_API;
+namespace Utilities;
 
+using Microsoft.Extensions.Configuration;
 using System.Diagnostics;
 using System.Xml.Linq;
 
@@ -23,8 +24,17 @@ public class SecretsPrimer
 
         string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
         string userSecretsPath = Path.Combine(appDataPath, "Microsoft", "UserSecrets", userSecretsId);
-        this.SecretsFilePath = Path.Combine(userSecretsPath, "secrets.json");
-        this.SecretFileIsSet = File.Exists(SecretsFilePath);
+        SecretsFilePath = Path.Combine(userSecretsPath, "secrets.json");
+        SecretFileIsSet = File.Exists(SecretsFilePath);
+
+        if (SecretFileIsSet)
+        {
+            IConfiguration config = new ConfigurationBuilder()
+                .AddJsonFile(SecretsFilePath, optional: false, reloadOnChange: false)
+                .Build();
+
+            Console.WriteLine($"Secret profile in use: {config["ProfileName"]} ({userSecretsId})");
+        }
     }
 
     public static Guid PromptGuid(string prompt)
@@ -36,6 +46,14 @@ public class SecretsPrimer
         }
 
         return value;
+    }
+
+    public virtual void BootstrapSecrets()
+    {
+        Console.WriteLine("Choose a descriptive profile name for this user secret.");
+        Console.Write("> Enter Profile Name: ");
+        string profileName = Console.ReadLine() ?? string.Empty;
+        BuildUserSecrets("ProfileName", profileName);
     }
 
     public static void BuildUserSecrets(string key, string value)
