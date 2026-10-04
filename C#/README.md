@@ -9,16 +9,19 @@ C#/
 ├── API_Management/
 │   ├── API_Management.csproj
 │   ├── Authenticator.cs
-│   ├── HttpReq.cs
-│   └── SecretsPrimer.cs
-└── BusinessCentral_API/
-    ├── BusinessCentral_API.csproj
-    ├── JSONParser.cs
-    ├── OAuthPrimer.cs
-    ├── Program.cs **X**
-    ├── RequestManager.cs
-    └── Properties/
-        └── launchSettings.json
+│   └── HttpReq.cs
+│
+├── BusinessCentral_API/
+│   ├── BusinessCentral_API.csproj
+│   ├── JSONParser.cs
+│   ├── OAuthPrimer.cs
+│   ├── Program.cs **X**
+│   ├── RequestManager.cs
+│   └── Properties/
+│       └── launchSettings.json
+└── Utilities/
+    ├── Utilities.csproj
+    └── SecretsPrimer.cs
 ```
 
 The **main program**/**entry point** in a project folder is marked with **X**.
