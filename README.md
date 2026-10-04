@@ -9,7 +9,8 @@ OwnProjects/
 ├── README.md
 ├── C#/
 │   ├── API_Management/
-│   ├── BusinessCentral_API/ 
+│   ├── BusinessCentral_API/
+│   ├── Utilities/
 │   └── README.md
 └── <OtherLanguage>/
     ├── <TBD1>/
@@ -26,6 +27,9 @@ A set of reusable classes for authenticating against and communicating with REST
 
 ### BusinessCentral_API
 A console application for querying the Business Central REST API. Guides the user through OAuth setup, environment and company selection, and endpoint discovery, then fetches and displays records using OData queries.
+
+### Utilities
+A collection of common helper methods and reusable components and general application support across projects.
 
 ### Next Project - Database querying using EF CORE
 This project will focus on querying relational databases using EF Core in C#. It will include examples of LINQ queries, filtering, sorting, projections, and joining related data across multiple tables. The project will demonstrate both method syntax and query syntax while showcasing best practices for data access in modern .NET applications.

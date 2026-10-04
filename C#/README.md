@@ -23,13 +23,22 @@ C#/
 
 The **main program**/**entry point** in a project folder is marked with **X**.
 
+## Utilities
+
+Contains small shared library for general-purpose helper code used across the solution. It keeps reusable logic separate from other projects and is intended for generic multipurpose tasks that can be leveraged throughout the solution.
+
+| File | Description |
+|------|-------------|
+| `SecretsPrimer.cs` | Resolves the project's `UserSecretsId` from the `.csproj` file and determines the path to the local `secrets.json`. Also provides `PromptGuid()` to interactively read a GUID from the console, and `BuildUserSecrets()` to invoke `dotnet user-secrets set` programmatically. |
+
+This project is not the main application entry point; instead, it provides support code that can be referenced by other projects when common logic needs to be reused without duplication.
+
 ## API_Management
 
 | File | Description |
 |------|-------------|
 | `Authenticator.cs` | Reads OAuth config (tenant ID, client ID, secret, scope, authority) from a JSON file and acquires a Bearer token via the **client credentials flow**. Posts to the token authority endpoint and stores the resulting `TokenType` and `AccessToken` as internal properties. |
 | `HttpReq.cs` | Wraps `HttpClient` and pre-sets the `Authorization` header using a token from `Authenticator`. Exposes `SendRequest(url, method, body?)` which dispatches GET or POST requests and returns the raw `HttpResponseMessage`. |
-| `SecretsPrimer.cs` | Resolves the project's `UserSecretsId` from the `.csproj` file and determines the path to the local `secrets.json`. Also provides `PromptGuid()` to interactively read a GUID from the console, and `BuildUserSecrets()` to invoke `dotnet user-secrets set` programmatically. |
 
 
 ## BusinessCentral_API
@@ -47,7 +56,17 @@ The **main program**/**entry point** in a project folder is marked with **X**.
 - [BC - Using filter expressions in OData URIs](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/webservices/use-filter-expressions-in-odata-uris)
 - [BC -Entering criteria in filters](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/devenv-entering-criteria-in-filters)
 
+<div align="center">
+  <hr style="border: 0; height: 1px; background: linear-gradient(to right, transparent, #6a737d, transparent); margin: 2rem 0;" />
+</div>
+<div align="center">
+  <strong>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</strong>
+</div>
+
 # Getting Started
+## Utilities
+Contains reusable helper code for resolving .NET User Secrets, prompting for GUIDs, and writing secrets programmatically; it is not a standalone application.
+
 ## API_Management
 A shared library — not a standalone application. It provides reusable classes for OAuth 2.0 authentication and HTTP request dispatching, and is referenced as a dependency by other C# projects in this repo. No setup required; just add it as a project reference.
 
