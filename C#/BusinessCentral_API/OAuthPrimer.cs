@@ -25,11 +25,11 @@ internal class OAuthPrimer : SecretsPrimer
 
             ValidateOAuthConfiguration(config);
 
-            Console.WriteLine("secrets.json exists and OAuth configuration is complete.");
+            Console.WriteLine($"secrets.json exists and OAuth configuration is complete.{Environment.NewLine}");
         }
         else
         {
-            BootstrapOAuthSecrets();
+            BootstrapSecrets();
             SecretFileIsSet = File.Exists(SecretsFilePath);
         }
     }
@@ -69,19 +69,20 @@ internal class OAuthPrimer : SecretsPrimer
         }
     }
 
-    private static void BootstrapOAuthSecrets()
+    public override void BootstrapSecrets()
     {
+        base.BootstrapSecrets();
         Console.WriteLine("Let's store the OAuth credentials in User Secrets for this project.");
 
-        Guid tenantId = PromptGuid("> Enter Tenant ID: ");
+        Guid tenantId = PromptGuid("Enter Tenant ID: ");
         BuildUserSecrets("OAuth:TenantId", tenantId.ToString());
         BuildUserSecrets("OAuth:Authority", $"https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token");
         BuildUserSecrets("OAuth:Scope", "https://api.businesscentral.dynamics.com/.default");
 
-        Guid clientId = PromptGuid("> Enter Client ID: ");
+        Guid clientId = PromptGuid("Enter Client ID: ");
         BuildUserSecrets("OAuth:ClientId", clientId.ToString());
 
-        Console.Write("Enter Client Secret: ");
+        Console.Write("> Enter Client Secret: ");
         string clientSecret = Console.ReadLine() ?? string.Empty;
         if (string.IsNullOrWhiteSpace(clientSecret))
         {
